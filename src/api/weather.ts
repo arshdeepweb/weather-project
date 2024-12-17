@@ -8,6 +8,8 @@ import type {
 
 class WeatherAPI {
   private createUrl(endpoint: string, params: Record<string, string | number>) {
+    console.log(API_CONFIG.API_KEY)
+    console.log(import.meta.env.VITE_OPENWEATHER_API_KEY)
     const searchParams = new URLSearchParams({
       appid: API_CONFIG.API_KEY,
       ...params,
@@ -16,6 +18,7 @@ class WeatherAPI {
   }
 
   private async fetchData<T>(url: string): Promise<T> {
+    console.log(url)
     const response = await fetch(url);
 
     if (!response.ok) {
